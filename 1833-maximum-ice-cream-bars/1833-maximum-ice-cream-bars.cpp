@@ -2,7 +2,6 @@ class Solution {
 public:
     int maxIceCream(vector<int>& costs, int coins) {
         sort(costs.begin(),costs.end());
-        unordered_map<int,int>map;
         int count=0;
         for(int i=0;i<costs.size();i++)
         { 
@@ -11,6 +10,8 @@ public:
                 coins-=costs[i];
                 count++;
             }
+            else
+                break;
         }
         return count;
     }
