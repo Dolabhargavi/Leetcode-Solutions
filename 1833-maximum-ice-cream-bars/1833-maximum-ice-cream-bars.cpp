@@ -11,7 +11,7 @@ public:
                 count++;
             }
             else
-                break;
+                return count;
         }
         return count;
     }
