@@ -9,9 +9,9 @@ public:
          int low=i-1,high=i+1;
          while(low>=0 && s[low]==s[i])
              low--;
-         while(high<=n && s[high]==s[i])
+         while(high<n && s[high]==s[i])
              high++;
-         while(low>=0 && high<=n && s[low]==s[high])
+         while(low>=0 && high<n && s[low]==s[high])
          {
               low--;
              high++;
