@@ -1,40 +1,20 @@
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
+ *Definition for a binary tree node.
+ *struct TreeNode {
+ *    int val;
+ *    TreeNode * left;
+ *    TreeNode * right;
+ *    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *};
  */
-class Solution {
-public:
-   void check(TreeNode* p, TreeNode* q,int &flag)
-    {
-       if(p==NULL && q==NULL)
-            return ;
-       if(p==NULL || q==NULL)
-       {
-           flag=1;
-           return ;
-       }
-         if(p->val!=q->val)
+class Solution
+{
+    public:
+        bool isSameTree(TreeNode *p, TreeNode *q)
         {
-           flag=1;
-             return;
-        } 
-        check(p->left,q->left,flag);
-        check(p->right,q->right,flag);
-         
-    }
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        int flag=0;
-        check(p,q,flag);
-        if(flag==1)
-            return false;
-        return true;
-        
-    }
+            if (p == NULL || q == NULL) return (p == q);
+            return (p->val == q->val) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        }
 };
