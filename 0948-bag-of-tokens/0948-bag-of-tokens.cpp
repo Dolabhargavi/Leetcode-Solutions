@@ -3,22 +3,21 @@ public:
     int bagOfTokensScore(vector<int>& tokens, int power) {
        sort(tokens.begin(),tokens.end());
         int ans=0,score=0;
-        int n=tokens.size()-1;
-        while(!tokens.empty())
+        int i=0;
+        int j=tokens.size()-1;
+        while(i<=j)
         {
-            if(tokens[0]<=power)
+            if(tokens[i]<=power)
             {
-                power-=tokens[0];
+                power-=tokens[i];           //using two pointers
                 score++;
-                tokens.erase(tokens.begin());
-                n--;
+                i++;
             }
             else if(score>0)
             {
-                power+=tokens[n];
+                power+=tokens[j];
                 score--;
-                tokens.pop_back();
-                n--;
+                j--;
             }
             else
             {
